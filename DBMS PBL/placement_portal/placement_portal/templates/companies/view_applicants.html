@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Applicants{% endblock %}
+{% block content %}
+<h2>Applicants for {{ job.title }}</h2>
+<ul>
+    {% for app in applicants %}
+        <li>
+            {{ app.student.user.username }} - {{ app.student.department }} - CGPA: {{ app.student.cgpa }}<br>
+            <a href="{{ app.student.resume.url }}" target="_blank">View Resume</a>
+        </li>
+    {% empty %}
+        <li>No applicants yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
