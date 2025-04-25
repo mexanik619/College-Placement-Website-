@@ -47,34 +47,66 @@ export default function PlacementPortal() {
   });
 
   /* ---------- effects ---------- */
+  // useEffect(() => {
+  //   fetch("/api/jobs")
+  //     .then((res) => res.json())
+  //     .then((data: Job[]) => setJobs(data))
+  //     .catch((err) => console.error(err));
+
+
+  //   fetch("http://localhost:3001/api/jobs")
+  //     .then(async (res) => {
+  //       const text = await res.text(); // get raw response
+  //       console.log("RAW RESPONSE:", text);
+  //       return JSON.parse(text);       // attempt to parse it manually
+  //     })
+  //     .catch((err) => console.error("Error parsing JSON:", err));
+  // }, []);
+
   useEffect(() => {
-    fetch("/api/jobs")
-      .then((res) => res.json())
-      .then((data: Job[]) => setJobs(data))
-      .catch((err) => console.error(err));
-
-
+    // Remove the first fetch entirely
+    
+    // Keep only this fetch with better error handling
     fetch("http://localhost:3001/api/jobs")
       .then(async (res) => {
-        const text = await res.text(); // get raw response
-        console.log("RAW RESPONSE:", text);
-        return JSON.parse(text);       // attempt to parse it manually
+        if (!res.ok) {
+          throw new Error(`HTTP error! Status: ${res.status}`);
+        }
+        return res.json();
       })
-      .catch((err) => console.error("Error parsing JSON:", err));
+      .then((data) => {
+        console.log("Jobs data:", data);
+        setJobs(data);
+      })
+      .catch((err) => {
+        console.error("Error fetching jobs:", err);
+      });
   }, []);
 
   /* ---------- handlers ---------- */
+  // const registerStudent = async () => {
+  //   const res = await fetch("/api/students", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify(form),
+  //   });
+  //   const data: Student = await res.json();
+  //   alert(`Registered! Student ID: ${data.student_id}`);
+  //   // (optional) update students list
+  //   setStudents((prev) => [...prev, data]);
+  // };
+
   const registerStudent = async () => {
-    const res = await fetch("/api/students", {
-      method: "POST",
+    const res = await fetch("http://localhost:3001/api/students", {
+      method: "POST", 
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
-    const data: Student = await res.json();
+    const data = await res.json();
     alert(`Registered! Student ID: ${data.student_id}`);
-    // (optional) update students list
     setStudents((prev) => [...prev, data]);
   };
+
 
   const applyToJob = async (student_id: number, job_id: number) => {
     await fetch("/api/applications", {
