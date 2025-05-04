@@ -1119,7 +1119,7 @@ export default function Dashboard() {
                   value={companyForm.industry}
                   onChange={(e) => setCompanyForm({ ...companyForm, industry: e.target.value })}
                   style={{ backgroundColor: "#ffeaa7" }}
-                />
+                />  
                 <Input
                   placeholder="Company Description"
                   value={companyForm.description}
@@ -1131,7 +1131,7 @@ export default function Dashboard() {
                   onClick={registerCompany} 
                   className="col-span-full"
                   style={{ 
-                    backgroundColor: "#fdcb6e", 
+                    backgroundColor: "#ffeaa7", 
                     color: "#2d3436", 
                     fontWeight: "bold",
                     borderColor: "#e17055"
@@ -1150,16 +1150,16 @@ export default function Dashboard() {
               
               {/* Company Selection */}
               <div className="mb-4">
-                <label className="block mb-2 font-medium" style={{ color: "#2d3436" }}>Select Company *</label>
+                <label className="block mb-2 font-medium" style={{ color: "#000000" }}>Select Company </label>
                 <select 
                   className="border rounded px-3 py-2 w-full"
                   value={selectedCompany || ""}
                   onChange={(e) => setSelectedCompany(Number(e.target.value) || null)}
                   style={{ backgroundColor: "#ffeaa7", borderColor: "#fdcb6e" }}
                 >
-                  <option value="">-- Select Company --</option>
+                  <option value="" >-- Select Company --</option>
                   {companies.map((company) => (
-                    <option key={company.company_id} value={company.company_id}>
+                    <option key={company.company_id} value={company.company_id} >
                       {company.name}
                     </option>
                   ))}
@@ -1172,7 +1172,7 @@ export default function Dashboard() {
                   placeholder="Job Title *"
                   value={jobForm.title}
                   onChange={(e) => setJobForm({ ...jobForm, title: e.target.value })}
-                  style={{ backgroundColor: "#ffeaa7" }}
+                  style={{ backgroundColor: "#000000" }}
                 />
                 <Input
                   placeholder="Salary Package *"
