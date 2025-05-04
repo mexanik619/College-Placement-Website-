@@ -200,6 +200,7 @@ interface Student {
 }
 
 interface Job {
+  company_id: number;
   job_id: number;
   title: string;
   description: string;
@@ -207,7 +208,7 @@ interface Job {
   company_name?: string;
 }
 
-interface Application {
+interface Application{ 
   student_id: number;
   job_id: number;
 }
