@@ -153,10 +153,10 @@ export default function PlacementPortal() {
   /* ---------- UI ---------- */
   return (
     <div className="p-4" style={{ backgroundColor: "#f8d7da", minHeight: "calc(100vh - 4rem)" }}>
-      <h1 className="text-2xl font-bold mb-4 text-center" style={{ color: "#721c24" }}>College Placement Portal</h1>
+      <h1 className="text-2xl font-bold mb-4 text-center" style={{ color: "#000000" }}>College Placement Portal</h1>
 
       {error && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        <div className="bg-red-100 border border-red-400 text-black px-4 py-3 rounded mb-4">
           {error}
         </div>
       )}
@@ -164,24 +164,21 @@ export default function PlacementPortal() {
       {/* ---- Student Registration ---- */}
       <Card className="mb-6" style={{ backgroundColor: "#fab1a0", borderColor: "#e17055" }}>
         <CardContent>
-          <h2 className="text-xl font-semibold mb-4 uppercase" style={{ color: "#d63031" }}>Student Registration</h2>
+          <h2 className="text-xl font-semibold mb-4 uppercase" style={{ color: "#000000" }}>Student Registration</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <Input
               placeholder="Name"
-              style={{ color: "#000000"}}
+              style={{ color: "#000000" }}
               value={form.name}
               onChange={(e) => setForm({ ...form, name: e.target.value })}
               className="bg-yellow-200 border-yellow-400"
-              
-              // style= {{color: "#0D0D0D"}}
             />
             <Input
               placeholder="Email"
               value={form.email}
               onChange={(e) => setForm({ ...form, email: e.target.value })}
               className="bg-yellow-200 border-yellow-400"
-              style={{ backgroundColor: "#ffeaa7" }}
-              
+              style={{ backgroundColor: "#ffeaa7", color: "#000000" }}
             />
             <Input
               placeholder="CGPA (0-10)"             
@@ -190,14 +187,14 @@ export default function PlacementPortal() {
                 setForm({ ...form, cgpa: parseFloat(e.target.value) || 0 })
               }
               className="bg-yellow-200 border-yellow-400"
-              style={{ backgroundColor: "#ffeaa7" }}
+              style={{ backgroundColor: "#ffeaa7", color: "#000000" }}
             />
             <Button 
               onClick={registerStudent} 
               className="col-span-full mt-2" 
               style={{ 
                 backgroundColor: "#fdcb6e", 
-                color: "#2d3436", 
+                color: "#000000", 
                 borderColor: "#e17055",
                 fontWeight: "bold"
               }}
@@ -206,7 +203,7 @@ export default function PlacementPortal() {
             </Button>
           </div>
           {isRegistered && (
-            <div className="mt-3 text-center p-2 bg-green-100 text-green-800 rounded">
+            <div className="mt-3 text-center p-2 bg-green-100 rounded" style={{ color: "#000000" }}>
               Registration successful! Your Student ID: {studentId}
             </div>
           )}
@@ -216,10 +213,10 @@ export default function PlacementPortal() {
       {/* ---- Job Openings ---- */}
       <Card style={{ backgroundColor: "#fab1a0", borderColor: "#e17055" }}>
         <CardContent>
-          <h2 className="text-xl font-semibold mb-4 uppercase" style={{ color: "#d63031" }}>Job Openings</h2>
+          <h2 className="text-xl font-semibold mb-4 uppercase" style={{ color: "#000000" }}>Job Openings</h2>
           
           {jobs.length === 0 ? (
-            <p className="text-center py-4" style={{ color: "#6c5ce7" }}>Loading job listings...</p>
+            <p className="text-center py-4" style={{ color: "#000000" }}>Loading job listings...</p>
           ) : (
             <div className="space-y-4">
               {jobs.map((job) => (
@@ -229,19 +226,19 @@ export default function PlacementPortal() {
                   style={{ backgroundColor: "#ffffff", borderColor: "#e17055" }}
                 >
                   <div className="flex justify-between">
-                    <h3 className="text-lg font-bold" style={{ color: "#2d3436" }}>{job.title}</h3>
-                    <span className="text-sm font-medium px-2 py-1 rounded" style={{ backgroundColor: "#ffeaa7", color: "#d63031" }}>
+                    <h3 className="text-lg font-bold" style={{ color: "#000000" }}>{job.title}</h3>
+                    <span className="text-sm font-medium px-2 py-1 rounded" style={{ backgroundColor: "#ffeaa7", color: "#000000" }}>
                       {job.company_name}
                     </span>
                   </div>
-                  <p className="mt-2" style={{ color: "#636e72" }}>{job.description}</p>
-                  <p className="text-sm mt-1" style={{ color: "#00b894" }}>
+                  <p className="mt-2" style={{ color: "#000000" }}>{job.description}</p>
+                  <p className="text-sm mt-1" style={{ color: "#000000" }}>
                     <strong>Salary:</strong> {job.salary_package}
                   </p>
                   <Button
                     onClick={() => applyToJob(job.job_id)}
                     className="mt-3"
-                    style={{ backgroundColor: "#fdcb6e", color: "#2d3436" }}
+                    style={{ backgroundColor: "#fdcb6e", color: "#000000" }}
                   >
                     Apply Now
                   </Button>
@@ -254,4 +251,3 @@ export default function PlacementPortal() {
     </div>
   );
 }
-
